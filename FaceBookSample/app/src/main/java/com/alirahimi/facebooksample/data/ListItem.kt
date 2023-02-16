@@ -1,7 +1,5 @@
 package com.alirahimi.facebooksample.data
 
-import com.catalin.fblikeapp.data.Fruit
-
 abstract class ListItem {
     companion object {
         private var id = 0
