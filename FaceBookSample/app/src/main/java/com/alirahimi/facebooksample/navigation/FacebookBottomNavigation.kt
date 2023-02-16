@@ -7,6 +7,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -27,7 +28,7 @@ fun FacebookBottomNavigation(navController: NavController, onDrawerIconClick: ()
             icon = {
                 Icon(Icons.Default.Home, contentDescription = "")
             },
-            label = { Text(text = Destination.Home.route) }
+            label = { Text(text = "Home") }
         )
 
         BottomNavigationItem(
@@ -36,9 +37,9 @@ fun FacebookBottomNavigation(navController: NavController, onDrawerIconClick: ()
                 navController.navigate(Destination.Notification.route)
             },
             icon = {
-                Icon(Icons.Default.Home, contentDescription = "")
+                Icon(Icons.Default.Notifications, contentDescription = "")
             },
-            label = { Text(text = Destination.Notification.route) }
+            label = { Text(text = "Notifications") }
         )
 
         BottomNavigationItem(
