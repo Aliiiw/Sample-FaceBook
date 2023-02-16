@@ -27,7 +27,7 @@ import com.alirahimi.facebooksample.data.Dessert
 import com.alirahimi.facebooksample.data.Fruit
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavController, modifier: Modifier) {
 
     val desserts = remember {
         mutableStateOf(Dessert.getAllDesserts())
@@ -40,10 +40,7 @@ fun HomeScreen(navController: NavController) {
     val pageSize = 5
     var currentPage = 0
 
-    LazyColumn(
-        modifier = Modifier
-            .background(Color(0xffeeeeee))
-    ) {
+    LazyColumn(modifier = modifier) {
         val dessertSize = desserts.value.size
 
         while (dessertSize > currentPage * pageSize) {

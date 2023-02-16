@@ -3,11 +3,14 @@ package com.alirahimi.facebooksample
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -61,16 +64,21 @@ fun FacebookScaffold(navController: NavHostController) {
                 onDrawerIconClick = onDrawerIconClick
             )
         },
-        drawerContent = { NavigationDrawer(navController = navController) }
-    ) {
+        drawerContent = { NavigationDrawer(navController = navController) },
+
+        ) { padding ->
+
+        val standardModifier = Modifier
+            .padding(bottom = padding.calculateBottomPadding())
+            .background(Color(0xffcccccc))
         NavHost(navController = navController, startDestination = Destination.Home.route) {
 
             composable(Destination.Home.route) {
-                HomeScreen(navController = navController)
+                HomeScreen(navController = navController, modifier = standardModifier)
             }
 
             composable(Destination.Notification.route) {
-                NotificationScreen(navController = navController)
+                NotificationScreen(navController = navController, modifier = standardModifier)
             }
         }
     }
