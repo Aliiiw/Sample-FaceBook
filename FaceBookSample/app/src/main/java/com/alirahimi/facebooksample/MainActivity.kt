@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,6 +20,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navDeepLink
+import com.alirahimi.facebooksample.data.Shortcut
+import com.alirahimi.facebooksample.data.getRandomItems
 import com.alirahimi.facebooksample.navigation.FacebookBottomNavigation
 import com.alirahimi.facebooksample.screens.*
 import com.alirahimi.facebooksample.ui.theme.FaceBookSampleTheme
@@ -54,6 +58,14 @@ fun FacebookScaffold(navController: NavHostController) {
     }
     val localContext = LocalContext.current
 
+    val randomItems = remember {
+        mutableStateOf(getRandomItems(10))
+    }
+
+    val shortcuts = remember {
+        mutableStateOf(Shortcut.getShortcuts())
+    }
+
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -63,7 +75,12 @@ fun FacebookScaffold(navController: NavHostController) {
                 onDrawerIconClick = onDrawerIconClick
             )
         },
-        drawerContent = { NavigationDrawer(navController = navController) },
+        drawerContent = {
+            NavigationDrawer(
+                randomItems = randomItems.value,
+                shortcuts = shortcuts.value
+            )
+        },
 
         ) { padding ->
 
