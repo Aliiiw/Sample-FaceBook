@@ -94,7 +94,7 @@ fun FacebookScaffold(navController: NavHostController) {
             }
 
             composable(Destination.Notification.route) {
-                NotificationScreen(navController = navController, modifier = standardModifier)
+                NotificationScreen(modifier = standardModifier)
             }
 
             composable(
