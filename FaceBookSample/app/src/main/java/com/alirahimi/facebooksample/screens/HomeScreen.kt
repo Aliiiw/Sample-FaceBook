@@ -57,7 +57,7 @@ fun HomeScreen(navController: NavController, modifier: Modifier) {
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
                         .background(Color.White)
-                        .clickable { }
+                        .clickable { navController.navigate(Destination.Detail.createRoute(it.id)) }
                 ) {
 
                     Text(
@@ -102,7 +102,13 @@ fun HomeScreen(navController: NavController, modifier: Modifier) {
                                 .width(250.dp)
                                 .padding(4.dp)
                                 .clip(RoundedCornerShape(16.dp))
-                                .clickable { }
+                                .clickable {
+                                    navController.navigate(
+                                        Destination.Detail.createRoute(
+                                            it.id
+                                        )
+                                    )
+                                }
                         ) {
                             Image(
                                 painter = painterResource(id = it.resId),
